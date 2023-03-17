@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h2>Caro Game Simple</h2> <hr>
+<p id ='result'></p>
+<button id="change_btn" onclick="changeVal()">Change Value</button>
+</body>
+</html>
+<script>
+    let tab = [];
+    let result = document.getElementById('result');
+    for (let i = 0; i < 5; i++) {
+        tab[i] = ['(.)','(.)','(.)','(.)','(.)'];
+        result.innerHTML += tab[i].join(' ') + '<br>';
+    }
+    let count = 1;
+
+    function changeVal() {
+        let x = +prompt('Nhập vị trí hàng');
+        let y = +prompt('Nhập vị trí cột');
+        if (count % 2 !== 0) {
+            tab[x][y] = 'X';
+        } else {
+            tab[x][y] = 'O';
+        }
+        count++;
+        result.innerHTML = '';
+        for (let j = 0; j < 5; j++) {
+            result.innerHTML += tab[j].join(' ') + '<br>';
+        }
+        for (let i = 0; i < 5; i++) {
+            for (let j = 0; j < 5; j++) {
+                if ((tab[i][j] === 'X' && tab[i][j + 1] === 'X' && tab[i][j + 2] === 'X') ||
+                    (tab[i][j] === 'X' && tab[i + 1][j] === 'X' && tab[i + 2][j] === 'X')) {
+                    alert('X chiến thắng!');
+                } else if ((tab[i][j] === 'O' && tab[i][j + 1] === 'O' && tab[i][j + 2] === 'O') ||
+                    (tab[i][j] === 'O' && tab[i + 1][j] === 'O' && tab[i + 2][j] === 'O')) {
+                    alert('O chiến thắng!');
+                }
+            }
+        }
+    }
+</script>
